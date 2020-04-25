@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title> SignUp To use Happy Hotels </title>
+{% endblock title %}
+
+{% block content %}
+    <div class="container mb-3">
+        <h3 class="mt-3">Manager Sign up</h3>
+
+
+        <form method = "POST" class="col-6 mt-3">
+            {% csrf_token %}
+            {% for eachroom in filtered_rooms %}
+            <div class="card">
+                <h5 class="card-header">Room {{eachroom.room_no}}</h5>
+                <div class="card-body">
+                  <h5 class="card-title">Room Manager Name: {{eachroom.room_manager.room_manager.first_name}}</h5>
+                  <p class="card-text">Total no.of available slots will be updated here</p>
+                  <a href="{% url 'selectslots' check_in_date eachroom.room_no %}" class="btn btn-primary">Select Time Slots for Stay</a>
+                </div>
+              </div>
+              {% endfor %}
+        </form>
+
+    </div>
+
+    
+    </script>
+{% endblock content %}

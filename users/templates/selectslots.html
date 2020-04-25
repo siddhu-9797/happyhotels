@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content%}
+{% block title %}
+    <title> {{current_user}}'s bookings </title>
+{% endblock title %}
+
+<div class="container">
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Room</th>
+        <th scope="col">Date of Stay</th>
+        <th scope="col">Available form</th>
+        <th scope="col">Available to</th>
+        <th scope="col">Book</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for eachslot in get_room_availabilities %}
+<tr>
+    <th scope="row">{{room_no}} </th>
+    <td> {{check_in_date}}</td>
+    <td>{{eachslot.available_from}}</td>
+    <td>{{eachslot.available_to}}</td>
+    <td><input type="checkbox" name="" id=""> </td>
+   
+  </tr>
+    
+{% endfor %}
+</div>
+
+{% endblock content %}

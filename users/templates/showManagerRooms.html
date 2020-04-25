@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content%}
+{% block title %}
+    <title> {{current_user}}'s bookings </title>
+{% endblock title %}
+
+
+<div class="container">
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Room ID</th>
+        <th scope="col">Advance Booking from</th>
+        <th scope="col">Availability</th>
+        
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for eachroom in getManagerRooms %}
+<tr>
+    <th scope="row">{{eachroom.room_no}} </th>
+    <td>{{eachroom.inAdvance}} Days</td>
+    <td>{{eachroom.isAvailable}}</td>
+    <td><a href="{%url 'setavailability' eachroom.room_no %}">Manage Room</a></td>
+</tr>
+    
+{% endfor %}
+</div>
+
+{% endblock content %}

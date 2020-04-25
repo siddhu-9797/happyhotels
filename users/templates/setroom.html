@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title> Set Room </title>
+{% endblock title %}
+{% block content%}
+
+<div class="container">
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        From how many days in advance this room can be booked:
+        <input type="number" name="inAdvance" id="id_inAdvance">
+    </div>
+
+    <div class="form-row">
+        <button  class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</form>
+</div>
+
+{% endblock content %}
+

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title> SignUp To use Happy Hotels </title>
+{% endblock title %}
+{% block content %}
+
+{% if getAvailabilitys %}
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">S No</th>
+            <th scope="col">Available From</th>
+            <th scope="col">Available To</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+    {% for availability in getAvailabilitys %}
+    <tr>
+        <th scope="row">{{loop.index}} </th>
+        <td>{{availability.available_from}}</td>
+        <td>{{availability.available_to}}</td>
+
+      </tr>
+    </div>
+    {% endfor %}
+{% endif %}
+    
+    <div class="container mb-3">
+        <h3 class="mt-3">Room  availability</h3>
+    
+
+        <form method = "POST" class="col-6 mt-3">
+            {% csrf_token %}
+            
+            <div class='input-group date' id="datetimepicker1">
+                <label for="id_check_in">Availablie from:</label>
+                <input type='text' class="form-control timepicker" name="check_in"  id='id_check_in'/>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            
+            <div class='input-group date' id="datetimepicker2">
+              <label for="id_check_out">Availablie to:</label>
+              <input type='text' class="form-control timepicker" name="check_out"  id='id_check_out'/>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>           
+            </div>
+              
+            
+            <button class="btn btn-primary" type="submit">SignUp</button>
+        </form>
+
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        $('#datetimepicker1').datetimepicker({
+          format: 'HH:mm:ss'
+        });
+        $('#datetimepicker2').datetimepicker({
+          format: 'HH:mm:ss'
+        });
+  
+      })
+    </script>
+{% endblock content %}
